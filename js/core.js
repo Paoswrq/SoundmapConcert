@@ -1,5 +1,5 @@
 let currentcolor = [255, 0, 0];
-let targetcolor = [255, 0, 0];
+let targetcolor = [0, 128, 128];
 
 let audioContext;
 let analyser;
