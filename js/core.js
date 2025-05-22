@@ -1,4 +1,4 @@
-let currentcolor = [255, 0, 0];
+let currentcolor = [0, 128, 128];
 let targetcolor = [0, 128, 128];
 
 let audioContext;
