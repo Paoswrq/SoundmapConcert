@@ -63,7 +63,7 @@ function createExplosion(loudness) {
         let size = Math.random() * loudness * 4;
         let dx = (Math.random() - 0.5) * 5;
         let dy = (Math.random() - 0.5) * 5;
-        let color = "rgb(" + (250 - rgb[0]) + ", " + (250 - rgb[1]) + ", " + (250 - rgb[2]) + ")";
+        let color = "rgb(" + (255 - rgb[0]) + ", " + (255 - rgb[1]) + ", " + (255 - rgb[2]) + ")";
         let firework = new Particles(x, y, dx, dy, size, color);
         particles.push(firework);
     }
