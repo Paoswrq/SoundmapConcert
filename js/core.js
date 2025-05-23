@@ -185,10 +185,10 @@ function calculateLoudness(dataArray) {
 }
 
 function getPitchAndMap(buffer, sampleRate) {
-	const colors = [[0, 0, 100], [50, 250, 50], [255, 255, 0]];
+	const colors = [[175, 175, 255], [175, 255, 175], [255, 255, 175]];
 	let maxIndex = -1;
 	let maxValue = -1;
-	let transition_speed = 0.005;
+	let transition_speed = 0.05;
 
 	for (let i = 0; i < buffer.length; i++) {
 		if (buffer[i] > maxValue) {
@@ -204,7 +204,7 @@ function getPitchAndMap(buffer, sampleRate) {
 	const maxFrequency = 1000; 
 
 	if (frequency < minFrequency) {
-		transition_speed = 0.001;
+		transition_speed = 0.01;
 		targetcolor = [150,150,150];
 	}
 	else {
@@ -220,6 +220,8 @@ function getPitchAndMap(buffer, sampleRate) {
 	currentcolor[2] += ((targetcolor[2] - currentcolor[2]) * transition_speed);
 }
 
+
+/*
 function lightenColor(color, amount = 0.3) {
   return [
     color[0] + (255 - color[0]) * amount,
@@ -227,6 +229,7 @@ function lightenColor(color, amount = 0.3) {
     color[2] + (255 - color[2]) * amount
   ];
 }
+*/
 
 // Exported functions to provide audio data and state
 export function getAudioData() {
@@ -243,8 +246,10 @@ export function getAudioDataFrequency() {
 }
 
 export function getPitch() {
-  let lightColor = lightenColor(currentcolor);
-  return { color: lightColor, pitch: frequency };
+  //let lightColor = lightenColor(currentcolor);
+  //return { color: lightColor, pitch: frequency };
+  let dark = [(255-currentcolor[0])*0.5 + 128, (255-currentcolor[1])*0.5 + 128, (255-currentcolor[2])*0.5 + 128];
+  return { darkcolor: dark, color: currentcolor, pitch: frequency };
 }
 
 export function getLoudness() {
