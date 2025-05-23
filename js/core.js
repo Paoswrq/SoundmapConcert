@@ -188,7 +188,7 @@ function getPitchAndMap(buffer, sampleRate) {
 	const colors = [[175, 175, 255], [175, 255, 175], [255, 255, 175]];
 	let maxIndex = -1;
 	let maxValue = -1;
-	let transition_speed = 0.05;
+	let transition_speed = 0.005;
 
 	for (let i = 0; i < buffer.length; i++) {
 		if (buffer[i] > maxValue) {
@@ -204,7 +204,7 @@ function getPitchAndMap(buffer, sampleRate) {
 	const maxFrequency = 1000; 
 
 	if (frequency < minFrequency) {
-		transition_speed = 0.01;
+		transition_speed = 0.001;
 		targetcolor = [150,150,150];
 	}
 	else {
