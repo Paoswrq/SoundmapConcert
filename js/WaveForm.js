@@ -3,6 +3,8 @@ import { getAudioData, getPitch } from "./core.js";
 export function loopWave() {
     // Get the current color based on detected pitch
     let currentcolor = getPitch().color; 
+    let oppositeRGB = getPitch().darkcolor;
+
 
     // Get the latest audio data (waveform samples)
     let dataArray = getAudioData();
@@ -33,7 +35,6 @@ export function loopWave() {
         let previousY = 0;
 
         // Calculate a contrasting color for the waveform line
-        let oppositeRGB = [255 - currentcolor[0], 255 - currentcolor[1], 255 - currentcolor[2]];
 
         // Loop through audio data to plot the waveform
         for (let i = 0; i < dataArray.length; i++) {
