@@ -7,6 +7,7 @@ let ctx = canvas.getContext("2d");
 
 // Store current color and loudness
 let rgb = null; 
+let dark_rgb = null;
 let loudness = null; 
 
 // Particle array for firework visuals
@@ -63,7 +64,7 @@ function createExplosion(loudness) {
         let size = Math.random() * loudness * 4;
         let dx = (Math.random() - 0.5) * 5;
         let dy = (Math.random() - 0.5) * 5;
-        let color = "rgb(" + (255 - rgb[0]) + ", " + (255 - rgb[1]) + ", " + (255 - rgb[2]) + ")";
+        let color = "rgb(" + (dark_rgb[0]) + ", " + (dark_rgb[1]) + ", " + (dark_rgb[2]) + ")";
         let firework = new Particles(x, y, dx, dy, size, color);
         particles.push(firework);
     }
@@ -74,6 +75,8 @@ let lastTime = 0;
 // Draw and update all particles on screen
 function animate() {
     rgb = getPitch().color;
+    dark_rgb = getPitch().darkcolor;
+    
     loudness = getLoudness();
 
     // Background color reflects pitch color
@@ -99,7 +102,7 @@ export function loopFireWork() {
     loudness = getLoudness();
 
     // Create explosion if loudness is above threshold
-    if (loudness > 15) {
+    if (loudness > 25) {
       createExplosion(loudness);
     }
 
