@@ -38,7 +38,7 @@ function detectSwitch() {
         lastSwitchTime = Date.now(); 
     }
 
-    if(Date.now() - lastSwitchTime > 60000) {
+    if(Date.now() - lastSwitchTime > 100000) {
         Switch(index);
         if(index === listofModules.length) {
           index = 1; 
